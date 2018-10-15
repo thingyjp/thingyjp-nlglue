@@ -47,7 +47,7 @@ void network_rtnetlink_clearipv4addr(int ifidx) {
 	rtnl_addr_put(addr);
 }
 
-void network_rtnetlink_setipv4addr(int ifidx, const char* addrstr) {
+void rtnetlink_ipv4_addr_add(int ifidx, const char* addrstr) {
 	struct nl_addr* localaddr;
 	nl_addr_parse(addrstr, AF_INET, &localaddr);
 
