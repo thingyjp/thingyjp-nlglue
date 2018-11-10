@@ -8,10 +8,15 @@ lib = shared_library('nlglue', src,
                      dependencies : deps,
                      install : true)
                         
-install_headers(['include/nlglue/nl80211.h', 'include/nlglue/rtnetlink.h' ], 
-                subdir : 'nlglue')
+install_headers(['include/nlglue/nl80211.h', 
+                 'include/nlglue/rtnetlink.h'], 
+                 subdir : 'nlglue')
+                 
+inc = include_directories('include')
 
 pkg = import('pkgconfig')
 pkg.generate(lib,
 			 version : '0.1',
              filebase : 'libnlglue')
+
+nlglue_dep = declare_dependency(include_directories : inc, link_with : lib)
